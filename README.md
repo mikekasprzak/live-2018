@@ -1,2 +1,2 @@
-# live
-My collection of live streaming pages
+# PoVRAZOR/Live
+My collection of pages used for OBS Live Streaming.
