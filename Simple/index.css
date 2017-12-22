@@ -16,10 +16,10 @@ body {
 }
 
 @keyframes logo {
-    0%   {transform: rotate(0deg);}
-    0.1%  {transform: rotate(-10deg)}
-    0.2%  {transform: rotate(10deg);}
-    0.3%  {transform: rotate(0deg);}
+    0%   {transform: rotate(0deg); opacity: 0.65;}
+    0.2%  {transform: rotate(-10deg); opacity: 1;}
+    0.4%  {transform: rotate(10deg); opacity: 1;}
+    0.6%  {transform: rotate(0deg); opacity: 0.65;}
 }
 
 .logo {
@@ -31,8 +31,10 @@ body {
 	height: 5em;
 
 	transform: rotate(0deg);
+	opacity: 0.65;
+
 	animation-name: logo;
-	animation-duration: 1000s;	/* every ~16 minutes */
+	animation-duration: 500s;	/* every ~9 minutes */
 	animation-iteration-count: infinite;
 	animation-timing-function: cubic-bezier(0.25,0,0.5,1.25);
 }
