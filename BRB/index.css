@@ -30,9 +30,9 @@ body {
 }
 
 @keyframes brb {
-    0%   {transform: scale(1.0); opacity: 0.5;}
-    50%  {transform: scale(1.125); opacity: 1.0;}
-    100%  {transform: scale(1.0); opacity: 0.5;}
+    0%   {transform: scale(1.0); opacity: 0;}
+    33%  {transform: scale(1.125); opacity: 1.0;}
+    66%  {transform: scale(1.0); opacity: 0;}
 }
 
 .screen .brb {
@@ -43,10 +43,10 @@ body {
 	text-shadow: 0 3px 12px rgba(0,0,0,0.5);
 
 	transform: scale(1.0);
-	opacity: 0.5;
+	opacity: 0;
 
 	animation-name: brb;
-	animation-duration: 5s;
+	animation-duration: 8s;
 	animation-iteration-count: infinite;
 }
 
