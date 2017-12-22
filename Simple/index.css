@@ -15,6 +15,22 @@ body {
 	font-size: 16px;
 }
 
+
+@keyframes parent {
+    0%		{left: -8em;}
+    100%	{left: 0.5em;}
+}
+
+.parent {
+	position: absolute;
+	margin: auto;
+	left: 0.5em;
+	bottom: 0.5em;
+
+	animation-name: parent;
+	animation-duration: 1.75s;
+}
+
 @keyframes logo {
     0%   {transform: rotate(0deg); opacity: 0.65;}
     0.2%  {transform: rotate(-10deg); opacity: 1;}
@@ -23,11 +39,6 @@ body {
 }
 
 .logo {
-	position: absolute;
-	margin: auto;
-	left: 0.5em;
-	bottom: 0.5em;
-	/*width: 12%;*/
 	height: 5em;
 
 	transform: rotate(0deg);
