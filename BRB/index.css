@@ -10,17 +10,38 @@ body {
 html {
 }
 
+@keyframes body {
+    0%  {opacity: 0.0;}
+    25%  {opacity: 0.0;}
+    100%  {opacity: 1.0;}
+}
+
 body {
 	position: relative;
 	margin: 0;
 
 	font-size: 16px;
 
-	background: linear-gradient(100deg, #333 7.5%, rgba(51,51,51,0.975) 22.5%, rgba(51,51,51,0.85) 27.5%, rgba(51,51,51,0.85) 72.5%, rgba(51,51,51,0.975) 77.5%, #333 92.5%);
-
+/*	background: linear-gradient(100deg, #333 7.5%, rgba(51,51,51,0.975) 22.5%, rgba(51,51,51,0.85) 27.5%, rgba(51,51,51,0.85) 72.5%, rgba(51,51,51,0.975) 77.5%, #333 92.5%);
+*/
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	opacity: 1;
+	animation-name: body;
+	animation-duration: 1s;
+}
+
+.bg {
+	position: absolute;
+
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	background: linear-gradient(100deg, #333 7.5%, rgba(51,51,51,0.975) 22.5%, rgba(51,51,51,0.85) 27.5%, rgba(51,51,51,0.85) 72.5%, rgba(51,51,51,0.975) 77.5%, #333 92.5%);
 }
 
 .screen {
