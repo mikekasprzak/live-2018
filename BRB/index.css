@@ -1,0 +1,67 @@
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+
+	overflow: hidden;
+}
+
+html {
+}
+
+body {
+	position: relative;
+	margin: 0;
+
+	font-size: 16px;
+
+	background: linear-gradient(100deg, #333 7.5%, rgba(51,51,51,0.975) 22.5%, rgba(51,51,51,0.85) 27.5%, rgba(51,51,51,0.85) 72.5%, rgba(51,51,51,0.975) 77.5%, #333 92.5%);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.screen {
+	text-align: center;
+
+	font-family: 'Nunito', cursive;
+}
+
+@keyframes brb {
+    0%   {transform: scale(1.0); opacity: 0.5;}
+    50%  {transform: scale(1.125); opacity: 1.0;}
+    100%  {transform: scale(1.0); opacity: 0.5;}
+}
+
+.screen .brb {
+	line-height: 1.5em;
+	font-size: 8em;
+
+	color: #6df;
+	text-shadow: 0 3px 12px rgba(0,0,0,0.5);
+
+	transform: scale(1.0);
+	opacity: 0.5;
+
+	animation-name: brb;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+}
+
+.screen .twitter {
+	line-height: 2em;
+
+	color: #59d;
+	text-shadow: 0 0 4px rgba(0,0,0,0.5);
+
+	font-size: 24px;
+}
+.screen .twitter strong {
+	color: #6ce;
+}
+
+.screen .logo {
+	height: 8em;
+}
