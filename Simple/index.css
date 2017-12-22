@@ -31,7 +31,7 @@ body {
 	opacity: 1;
 
 	animation-name: parent;
-	animation-duration: 1.2s;
+	animation-duration: 1s;
 }
 
 @keyframes logo {
