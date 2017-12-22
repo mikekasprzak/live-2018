@@ -28,7 +28,7 @@ body {
 
 	opacity: 1;
 	animation-name: body;
-	animation-duration: 1s;
+	animation-duration: 0.5s;
 }
 
 .bg {
