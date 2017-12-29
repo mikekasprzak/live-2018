@@ -1,4 +1,12 @@
 
+/* CYAN: #6bc1c8 */
+/* RED: #cc7f76 */
+/* GREEN: #9be39d */
+/* YELLOW: #cad589 */
+/* PURPLE: #a257a5 */
+/* BLUE: #6bc1c8 */
+/* GRAY: #aeaeae */
+
 @font-face {
 	font-family: "C64";
 	src: url("../common/font/C64_Pro-STYLE.woff") format("woff");
@@ -58,10 +66,10 @@ body {
 }
 
 .notes .h1 {
-	color: red;
+	color: #6bc1c8;
 }
 .notes .h2 {
-	color: #999;
+	color: #aeaeae;
 }
 
 .page {
@@ -69,5 +77,5 @@ body {
 	left: 64em;
 	top: 43em;
 
-	color: #88f;
+	color: #6bc1c8;
 }
