@@ -54,7 +54,7 @@ body {
 
 	font-size: 2em;
 
-	color: #fff;
+	color: #FFFFFF;
 }
 
 .avatar {
@@ -70,20 +70,20 @@ body {
 	left: 64em;
 	top: 1em;
 
-	color: #fff;
+	color: #FFFFFF;
 }
 
 .notes .h1 {
-	color: #6bc1c8;
+	color: #70A4B2;
 }
 .notes .h2 {
-	color: #aeaeae;
+	color: #959595;
 }
 
 .page {
 	position: fixed;
-	left: 64em;
+	left: 65em;
 	top: 43em;
 
-	color: #6bc1c8;
+	color: #6C5EB5;
 }
