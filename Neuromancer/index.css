@@ -80,6 +80,21 @@ body {
 	color: #959595;
 }
 
+.notes .red { color: #68372B; /* Red */ }
+.notes .cyan { color: #70A4B2; /* Cyan */ }
+.notes .purple { color: #6F3D86; /* Purple */ }
+/* #588D43 - Dark Green */
+/* #352879 - Dark Blue */
+.notes .yellow { color: #B8C76F; /* Yellow */ }
+/* #6F4F25 - Brown */
+/* #433900 - Dark Brown */
+.notes .skin { color: #9A6759; /* Light Red (Skin) */ }
+/* #444444 - Dark Gray */
+/* #6C6C6C - Middle Gray */
+.notes .lime { color: #9AD284 /* Light Green (Lime) */ }
+/* #6C5EB5 - Light Blue */
+/* #959595 - Light Gray */
+
 .page {
 	position: fixed;
 	left: 65em;
