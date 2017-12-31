@@ -102,3 +102,16 @@ body {
 
 	color: #6C5EB5;
 }
+
+@keyframes cursor {
+    0%   { opacity: 1; }
+    50%  { opacity: 1; }
+    50.1%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.cursor {
+    animation-name: cursor;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
