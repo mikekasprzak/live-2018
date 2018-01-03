@@ -1,7 +1,7 @@
-[submodule "carton"]
-	path = carton
-	url = https://github.com/mikekasprzak/carton
 [submodule "external/preact"]
 	path = external/preact
 	url = https://github.com/developit/preact.git
 	shallow = true
+[submodule "external/carton"]
+	path = external/carton
+	url = https://github.com/mikekasprzak/carton.git
