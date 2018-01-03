@@ -1,4 +1,4 @@
-[submodule "external/preact"]
+[submodule "external/3rd-party/preact"]
 	path = external/3rd-party/preact
 	url = https://github.com/developit/preact.git
 	shallow = true
