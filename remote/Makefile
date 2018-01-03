@@ -1,11 +1,12 @@
 
 TARGET				:=	remote
-TARGET_FOLDER		:=	.
 
-INCLUDE_FOLDERS		+=	../external/preact/
-INCLUDE_FOLDERS		+=	../external/ldui/
-INCLUDE_FOLDERS		+=	../common/icons/
-INCLUDE_FOLDERS		+=	src/
+INPUT_DIRS			+=	$(TARGET)/src/
+INPUT_DIRS			+=	external/preact/
+INPUT_DIRS			+=	external/ldui/
+INPUT_DIRS			+=	common/icons/
+
+LINT_IGNORE			+=	external/preact/
 
 MAIN_JS				:=	src/main.js
 
