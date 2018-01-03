@@ -1,5 +1,5 @@
 [submodule "external/preact"]
-	path = external/preact
+	path = external/3rd-party/preact
 	url = https://github.com/developit/preact.git
 	shallow = true
 [submodule "external/carton"]
