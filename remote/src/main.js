@@ -24,7 +24,7 @@ class Main extends Component {
 		return (
 			<div>
 				<div>Hey</div>
-				<UIIcon>radio-empty</UIIcon>
+				<UIIcon>checkbox-checked</UIIcon>
 				<UIImage src="../common/ChickenC64.png" />
 			</div>
 		);
