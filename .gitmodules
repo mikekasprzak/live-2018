@@ -6,3 +6,7 @@
 	path = external/carton
 	url = https://github.com/mikekasprzak/carton.git
 	shallow = true
+[submodule "external/ldui"]
+	path = external/ldui
+	url = https://github.com/mikekasprzak/ldui.git
+	shallow = true
