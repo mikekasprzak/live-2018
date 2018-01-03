@@ -9,7 +9,7 @@
 	branch = master
 	shallow = true
 [submodule "external/ldui"]
-	path = external/ldui
+	path = external/ui
 	url = https://github.com/mikekasprzak/ldui.git
 	branch = master
 	shallow = true

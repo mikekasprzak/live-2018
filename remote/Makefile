@@ -3,7 +3,8 @@ TARGET				:=	remote
 
 INPUT_DIRS			+=	$(TARGET)/src/
 INPUT_DIRS			+=	external/preact/
-INPUT_DIRS			+=	external/ldui/
+INPUT_DIRS			+=	external/ui/
+INPUT_DIRS			+=	external/svgload/
 INPUT_DIRS			+=	common/icons/
 
 LINT_IGNORE			+=	external/preact/
