@@ -1,12 +1,15 @@
 [submodule "external/3rd-party/preact"]
 	path = external/3rd-party/preact
 	url = https://github.com/developit/preact.git
+	branch = master
 	shallow = true
 [submodule "external/carton"]
 	path = external/carton
 	url = https://github.com/mikekasprzak/carton.git
+	branch = master
 	shallow = true
 [submodule "external/ldui"]
 	path = external/ldui
 	url = https://github.com/mikekasprzak/ldui.git
+	branch = master
 	shallow = true
