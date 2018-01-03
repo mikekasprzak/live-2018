@@ -5,3 +5,4 @@
 [submodule "external/carton"]
 	path = external/carton
 	url = https://github.com/mikekasprzak/carton.git
+	shallow = true
