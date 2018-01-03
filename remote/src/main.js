@@ -1,7 +1,7 @@
 import {h, render, Component}			from 'preact/preact';
 
 // @ifdef DEBUG
-import {}								from 'preact-devtools/devtools';
+//import {}								from 'preact-devtools/devtools';
 // @endif
 
 

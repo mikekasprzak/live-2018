@@ -8,7 +8,7 @@ INPUT_DIRS			+=	common/icons/
 
 LINT_IGNORE			+=	external/preact/
 
-MAIN_JS				:=	src/main.js
+MAIN_JS				:=	$(TARGET)/src/main.js
 
 
 # Make this point to the Makefile found in the Carton directory
