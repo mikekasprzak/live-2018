@@ -2,12 +2,10 @@
 TARGET				:=	remote
 TARGET_FOLDER		:=	.
 
-SRC					:=	src
-
-INCLUDE_FOLDERS		+=	external/preact
-INCLUDE_FOLDERS		+=	external/ldui
-INCLUDE_FOLDERS		+=	common/icons
-INCLUDE_FOLDERS		+=	src
+INCLUDE_FOLDERS		+=	../external/preact/
+INCLUDE_FOLDERS		+=	../external/ldui/
+INCLUDE_FOLDERS		+=	../common/icons/
+INCLUDE_FOLDERS		+=	src/
 
 MAIN_JS				:=	src/main.js
 
