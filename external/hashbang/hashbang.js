@@ -5,24 +5,31 @@
 		aURL = aURL || window.location.href;
 
 		var out = {};
-		out.fullPath = aURL.slice(aURL.indexOf('#!')+2);
-		var hbParts = out.fullPath.split('?');
+		out.href = aURL;
+		out.ref = aURL.slice(aURL.indexOf('#!')+2);
+		var hbParts = out.ref.split('?');
 
-		out.path = hbParts[0];
-		var rawVars = hbParts[1];
+		out.pathname = hbParts[0];
+//		if ( out.pathname.indexOf('/') !== 0 )
+		if ( out.pathname[0] === '/' )
+			out.path = out.pathname.slice(1).split('/');
+		else
+			out.path = out.pathname.split('/');
 
-		if ( rawVars ) {
-			rawVars = rawVars.split('&');
-			out.vars = {};
+		var rawArgs = hbParts[1];
+		if ( rawArgs ) {
+			out.query = rawArgs;
+			rawArgs = rawArgs.split('&');
+			out.arg = {};
 
-			for ( var i = 0; i < rawVars.length; i++ ) {
-				var hash = rawVars[i].split('=');
+			for ( var i = 0; i < rawArgs.length; i++ ) {
+				var hash = rawArgs[i].split('=');
 
 				if ( hash.length > 1 ) {
-					out.vars[hash[0]] = hash[1];
+					out.arg[hash[0]] = hash[1];
 				}
 				else {
-					out.vars[hash[0]] = null;
+					out.arg[hash[0]] = null;
 				}
 			}
 		}

@@ -10,18 +10,26 @@ import UIImage							from 'ui/image/image';
 class Main extends Component {
 	constructor( props ) {
 		super(props);
-
 		console.log("[constructor]");
-
 		// @ifdef DEBUG
 		console.log("Running in DEBUG mode");
 		// @endif
 
-		console.log("HB: ", parseHashBang());
+		this.state = {
+			'url': parseHashBang()
+		};
+
+		window.addEventListener('hashchange', this.hashChange.bind(this));
 	}
 
-	render( props ) {
+	hashChange( e ) {
+		this.setState({'url': parseHashBang()});
+	}
+
+	render( props, state ) {
 		//document.title = this.getTitle(node);
+
+		console.log(state.url);
 
 		return (
 			<div>
