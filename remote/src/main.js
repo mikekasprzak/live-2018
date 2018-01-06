@@ -67,8 +67,6 @@ class Main extends Component {
 	render( props, state ) {
 		document.title = state.url.pathname;
 
-		console.log(state.url);
-
 		return (
 			<div>
 				<div>Hey</div>
