@@ -16,6 +16,8 @@ class Main extends Component {
 		// @ifdef DEBUG
 		console.log("Running in DEBUG mode");
 		// @endif
+
+		console.log("HB: ", parseHashBang());
 	}
 
 	render( props ) {

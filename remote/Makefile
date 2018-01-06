@@ -5,6 +5,7 @@ INPUT_DIRS			+=	$(TARGET)/src/
 INPUT_DIRS			+=	external/preact/
 INPUT_DIRS			+=	external/ui/
 INPUT_DIRS			+=	external/svgload/
+INPUT_DIRS			+=	external/hashbang/
 INPUT_DIRS			+=	common/icons/
 
 LINT_IGNORE			+=	external/preact/

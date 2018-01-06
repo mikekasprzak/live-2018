@@ -19,4 +19,3 @@
 	};
 	xhr.send();
 })("out.min.svg");
-
