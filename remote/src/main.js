@@ -21,6 +21,8 @@ class Main extends Component {
 
 		window.addEventListener('hashchange', this.hashChange.bind(this));
 		window.addEventListener('navchange', this.navChange.bind(this));
+
+		this.finito = this.finito.bind(this);
 	}
 
 	componentWillMount() {
@@ -64,6 +66,10 @@ class Main extends Component {
 		window.scrollTo(0, 0);
 	}
 
+	finito( e ) {
+		console.log(e);
+	}
+
 	render( props, state ) {
 		document.title = state.url.pathname;
 
@@ -71,7 +77,7 @@ class Main extends Component {
 			<div>
 				<div>Hey</div>
 				<UIIcon>checkbox-checked</UIIcon>
-				<UIImage src="../common/ChickenC64.png" />
+				<UIImage class="chicken" src="../common/ChickenC64.png" onanimationend={this.finito} />
 				<div><UILink href="#!/">null</UILink>, <UILink href="#!/puber">puber</UILink>, <UILink href="#!/shemba">shemba</UILink></div>
 			</div>
 		);
