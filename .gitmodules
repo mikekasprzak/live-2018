@@ -13,3 +13,16 @@
 	url = https://github.com/mikekasprzak/ldui.git
 	branch = master
 	shallow = true
+[submodule "external/hashbang"]
+	path = external/hashbang
+	url = https://github.com/mikekasprzak/hashbang.git
+	shallow = true
+[submodule "external/svgload"]
+	path = external/svgload
+	url = https://github.com/mikekasprzak/svgload.git
+	shallow = true
+[submodule "external/shallow"]
+	path = external/shallow
+	url = https://github.com/mikekasprzak/shallow.git
+	shallow = true
+
