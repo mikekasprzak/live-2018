@@ -1,0 +1,29 @@
+
+@keyframes chicken {
+	from {
+		transform: perspective(512px) rotateY(0deg);
+	}
+
+	to {
+		transform: perspective(512px) rotateY(360deg);
+	}
+}
+
+@keyframes chok {
+	from {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.chicken {
+	animation-duration: 3s, 5s;
+	animation-name: chicken, chok;
+}

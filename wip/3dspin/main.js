@@ -1,7 +1,7 @@
-import {h, render, Component}			from "preact/preact";
-
-import ViewMain							from "view-main/view-main";
-import ViewChat							from "view-chat/view-chat";
+import {h, render, Component}			from 'preact/preact';
+import UIIcon							from 'ui/icon/icon';
+import UIImage							from 'ui/image/image';
+import UILink							from 'ui/link/link';
 
 // @ifdef DEBUG
 //import {}								from 'preact-devtools/devtools';
@@ -21,6 +21,8 @@ class Main extends Component {
 
 		window.addEventListener('hashchange', this.hashChange.bind(this));
 		window.addEventListener('navchange', this.navChange.bind(this));
+
+		this.finito = this.finito.bind(this);
 	}
 
 	componentWillMount() {
@@ -64,22 +66,22 @@ class Main extends Component {
 		window.scrollTo(0, 0);
 	}
 
+	finito( e ) {
+		console.log(e);
+	}
+
 	render( props, state ) {
 		document.title = state.url.pathname;
 
 		return (
-			<div id="content">
-				<ViewMain />
-				<ViewChat />
+			<div>
+				<div>Hey</div>
+				<UIIcon>checkbox-checked</UIIcon>
+				<UIImage class="chicken" src="../common/ChickenC64.png" onanimationend={this.finito} />
+				<div><UILink href="#!/">null</UILink>, <UILink href="#!/puber">puber</UILink>, <UILink href="#!/shemba">shemba</UILink></div>
 			</div>
 		);
 	}
 }
-
-//				<div>Hey</div>
-//				<UIIcon>checkbox-checked</UIIcon>
-//				<UIImage class="chicken" src="../common/ChickenC64.png" onanimationend={this.finito} />
-//				<div><UILink href="#!/">null</UILink>, <UILink href="#!/puber">puber</UILink>, <UILink href="#!/shemba">shemba</UILink></div>
-
 
 render(<Main />, document.body);
