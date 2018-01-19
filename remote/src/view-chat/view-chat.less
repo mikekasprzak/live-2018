@@ -1,7 +1,18 @@
 
-#chat > .info {
-	margin: 0.5em;
+#chat {
+	display: flex;
+	flex-direction: column;
 
+	font-family: sans-serif;
+}
+
+#chat > .info,
+#chat > .reply {
+	margin: 0.75em;
+	flex-shrink: 0;
+}
+
+#chat > .info {
 	& .on {
 		color: green;
 	}
@@ -12,10 +23,13 @@
 }
 
 #chat > .feed {
-	border: 1px solid black;
+	flex-grow: 1;
+	flex-shrink: 1;
+	overflow: auto;
 
 	& > .item {
-		margin: 0.5em;
+		margin: 0.25em;
+		line-height: 1.4em;
 
 		& > .name {
 			font-weight: bold;

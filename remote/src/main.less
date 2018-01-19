@@ -1,6 +1,17 @@
 
+html,
+body {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	margin: 0;
+}
+
 #content {
 	display: flex;
+	height: 100%;
 
 	& > div {
 		padding-left: 0.5em;
@@ -12,9 +23,11 @@
 
 	& > #main {
 		flex: 3;
+		height: 100%;
 	}
 
 	& > #chat {
 		flex: 1;
+		height: 100%;
 	}
 }

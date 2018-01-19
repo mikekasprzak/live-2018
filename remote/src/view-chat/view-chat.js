@@ -12,10 +12,10 @@ export default class ViewChat extends Component {
 		};
 	}
 
-	renderItem( name, text ) {
+	renderItem( name, text, service = 'tv' ) {
 		return (
 			<div class="item">
-				<span class="name">{name}: </span><span class="text">{text}</span>
+				<UIIcon src={service} /><span class="name">{name}: </span><span class="text">{text}</span>
 			</div>
 		);
 	}
@@ -29,10 +29,12 @@ export default class ViewChat extends Component {
 					<div>Twitch: {state.twitch ? <span class="on">CONNECTED</span> : <span class="off">DISCONNECTED</span>}</div>
 				</div>
 				<div class="feed">
-					{this.renderItem("David", "Are you my daddy?")}
+					{this.renderItem("David", "Are you my daddy?", 'twitch')}
 					{this.renderItem("Chad", "...")}
+					{this.renderItem("David", "*tears*", 'twitch')}
 				</div>
 				<div class="reply">
+					The moon is while
 				</div>
 			</div>
 		);
