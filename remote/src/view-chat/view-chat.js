@@ -15,18 +15,18 @@ export default class ViewChat extends Component {
 	renderItem( name, text, service = 'tv' ) {
 		return (
 			<div class="item">
-				<UIIcon src={service} /><span class="name">{name}: </span><span class="text">{text}</span>
+				<UIIcon src={service} /><span class="name">{name}:</span><span class="text">{text}</span>
 			</div>
 		);
 	}
 
 	render( props, state ) {
-
+		var TwitchStatus = state.twitch ? <UIIcon class="on" src="checkmark" /> : <UIIcon class="off" src="cross" />;
 
 		return (
 			<div id="chat">
 				<div class="info">
-					<div>Twitch: {state.twitch ? <span class="on">CONNECTED</span> : <span class="off">DISCONNECTED</span>}</div>
+					<div><span>Twitch: </span>{TwitchStatus}</div>
 				</div>
 				<div class="feed">
 					{this.renderItem("David", "Are you my daddy?", 'twitch')}
