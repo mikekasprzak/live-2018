@@ -26,7 +26,7 @@ export default class ViewChat extends Component {
 		return (
 			<div id="chat">
 				<div class="info">
-					<div><UIIcon src="twitch" /><span>:</span>{TwitchStatus}</div>
+					<div><span><UIIcon src="twitch" />:</span>{TwitchStatus}</div>
 				</div>
 				<div class="feed">
 					{this.renderItem("David", "Are you my daddy?", 'twitch')}
