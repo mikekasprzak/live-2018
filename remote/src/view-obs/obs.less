@@ -1,0 +1,126 @@
+
+#obs {
+/*	display: flex;
+	flex-direction: column;*/
+
+	& .on {
+	}
+
+	& .off {
+		color: red;
+
+		&:hover {
+			color: white;
+		}
+	}
+
+	/* Parent Flex */
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+
+#obs > .info {
+	padding: 0.75em;
+/*	flex-shrink: 0;*/
+
+	background: #eee;
+
+	& .ui-button {
+		display: inline-block;
+		padding: 0.25em 0.5em;
+		background: inherit;
+
+		&:hover {
+			background: red;
+		}
+
+		& svg {
+			display: block;
+		}
+	}
+
+	& > div {
+		display: inline-block;
+		margin-left: 2em;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		& > * {
+			vertical-align: middle;
+			margin-left: 0.3em;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+
+		& .offline {
+			font-weight: bold;
+		}
+
+		& .live {
+			background: red;
+			color: white;
+			font-weight: bold;
+
+			padding: 0.25em 0.75em;
+			border-radius: 0.5em;
+		}
+	}
+}
+
+#obs > .body {
+/*	flex-grow: 1;
+	flex-shrink: 1;*/
+	overflow: auto;
+
+	& > * {
+		margin: 0.5em;
+	}
+
+	& .label {
+		margin-bottom: 0;
+		font-size: 0.8em;
+
+		color: #444;
+	}
+
+	& .flex {
+		display: flex;
+
+		& > * {
+			margin-left: 1em;
+			flex: 1;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	}
+
+	& #title {
+		flex: 2;
+	}
+	& #game {
+		flex: 1;
+	}
+
+	& .full {
+		margin-top: 0;
+		display: flex;
+
+		& > input {
+			flex: 9;
+		}
+
+		& > * {
+			margin-left: 0.3em;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	}
+}

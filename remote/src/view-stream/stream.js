@@ -49,7 +49,7 @@ export default class ViewStream extends Component {
 					<div><span>SERVICE:</span>{ServiceStatus}</div>
 					<div><span>LIVE:</span>{LiveStatus}</div>
 				</div>
-				<div class="service">
+				<div class="body">
 					<div class="flex">
 						<div id="title">
 							<div class="label">Title: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /> <UIIcon src="smashcast" /></div>

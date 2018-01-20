@@ -1,7 +1,7 @@
 
 #stream {
-	display: flex;
-	flex-direction: column;
+/*	display: flex;
+	flex-direction: column;*/
 
 	& .on {
 	}
@@ -13,11 +13,14 @@
 			color: white;
 		}
 	}
+
+	/* Parent Flex */
+	flex-shrink: 0;
 }
 
 #stream > .info {
 	padding: 0.75em;
-	flex-shrink: 0;
+/*	flex-shrink: 0;*/
 
 	background: #ddd;
 
@@ -68,17 +71,8 @@
 }
 
 #stream > .body {
-	flex-grow: 1;
-	flex-shrink: 1;
-	overflow: auto;
-}
+/*	flex-shrink: 0;*/
 
-#stream > .service {
-	flex-shrink: 0;
-}
-
-#stream > .body,
-#stream > .service {
 	& > * {
 		margin: 0.5em;
 	}

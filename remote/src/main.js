@@ -1,8 +1,8 @@
 import {h, render, Component}			from "preact/preact";
 
-import ViewOBS							from "view-obs/view-obs";
-import ViewStream						from "view-stream/view-stream";
-import ViewChat							from "view-chat/view-chat";
+import ViewOBS							from "view-obs/obs";
+import ViewStream						from "view-stream/stream";
+import ViewChat							from "view-chat/chat";
 
 // @ifdef DEBUG
 //import {}								from 'preact-devtools/devtools';
@@ -73,11 +73,13 @@ class Main extends Component {
 
 		return (
 			<div id="content">
-				<div>
+				<div id="left">
 					<ViewOBS />
 					<ViewStream />
 				</div>
-				<ViewChat />
+				<div id="right">
+					<ViewChat />
+				</div>
 			</div>
 		);
 	}
