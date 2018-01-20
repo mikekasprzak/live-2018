@@ -123,4 +123,42 @@
 			}
 		}
 	}
+
+	& .scenes {
+
+		& > .active {
+			background: cornflowerblue;
+			color: white;
+		}
+
+		& > .title {
+			padding-bottom: 0;
+			font-size: 0.8em;
+		}
+
+		& > * {
+			line-height: 1.4em;
+			padding: 0.25em;
+
+			display: flex;
+
+			& > div {
+				flex: 20;
+
+				margin-left: 0.3em;
+
+				&:first-child {
+					margin-left: 0;
+				}
+			}
+
+			& > .ui-button {
+				flex: 1;
+			}
+		}
+
+		& .info {
+			float: right;
+		}
+	}
 }

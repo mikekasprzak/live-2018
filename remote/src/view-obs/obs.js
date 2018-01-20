@@ -51,6 +51,10 @@ export default class ViewOBS extends Component {
 				})
 				.then(r => {
 					Info.sceneCollections = r.sceneCollections;
+					return OBS.GetCurrentSceneCollection();
+				})
+				.then(r => {
+					Info.currentSceneCollection = r.scName;
 					return OBS.GetSourcesList();
 				})
 				.then(r => {
@@ -96,39 +100,48 @@ export default class ViewOBS extends Component {
 	}
 
 	renderStatus( status, service, func ) {
-		return <UIButton class={status ? "on" : "off"} onClick={func}><UIIcon src={service} /></UIButton>;
+		return <UIButton class={status ? 'on' : 'off'} onClick={func}><UIIcon src={service} /></UIButton>;
 	}
 
 	render( props, state ) {
 		const OBSStatus = this.renderStatus(state.obs && state.obsStatus, 'obs', this.obsConnect);
 		let OBSInfo = [];
 		if ( state.obsInfo ) {
-			OBSInfo.push(<div><span>VERSION:</span><span class="offline">{state.obsInfo.version}</span></div>);
-			OBSInfo.push(<div><span>PLUGIN:</span><span class="offline">{state.obsInfo.pluginVersion}</span></div>);
+			OBSInfo.push(<div><span>VERSION:</span><span class="offline">{state.obsInfo.version}</span><span>({state.obsInfo.pluginVersion})</span></div>);
 		}
 		if ( state.obsStatus ) {
 			OBSInfo.push(<div><span>STREAM:</span>{state.obsStatus.streaming ? <span class="live">{state.obsStatus.streamTimecode}</span> : <span class="offline">OFFLINE</span>}</div>);
 			OBSInfo.push(<div><span>RECORD:</span>{state.obsStatus.recording ? <span class="live">{state.obsStatus.recTimecode}</span> : <span class="offline">NO</span>}</div>);
 
-			//OBSInfo.push(state.obsStatus.pulse ? '.' : '');
+			// Profiles are your encoder settings, stream URL, etc
+			if ( state.obsStatus.currentProfile ) {
+				OBSInfo.push(<div><span>PROFILE:</span><span class="offline">{state.obsStatus.currentProfile}</span></div>);
+			}
 		}
 
-		const ServiceStatus = [
-			this.renderStatus(state.twitch, 'twitch'),
-			this.renderStatus(state.youtube, 'youtube'),
-			this.renderStatus(state.mixer, 'mixer'),
-			this.renderStatus(state.smashcast, 'smashcast'),
-			this.renderStatus(state.twitter, 'twitter'),
-			this.renderStatus(state.instagram, 'instagram'),
-			this.renderStatus(state.facebook, 'facebook'),
-		];
+		let OBSScenes = [];
+		let OBSSceneCollections = [];
+		let OBSProfiles = [];
+		if ( state.obsInfo && state.obsStatus ) {
+			for ( var idx in state.obsInfo.scenes ) {
+				let scene = state.obsInfo.scenes[idx];
+				OBSScenes.push(
+					<div class={scene.name == state.obsStatus.currentScene ? 'active' : ''}>
+						<div><span>{scene.name}</span><span class="info">[{scene.sources.length}]</span></div>
+						<UIButton>SET</UIButton>
+					</div>
+				);
 
-		const LiveStatus = [
-			this.renderStatus(state.twitch, 'twitch'),
-			this.renderStatus(state.youtube, 'youtube'),
-			this.renderStatus(state.mixer, 'mixer'),
-			this.renderStatus(state.smashcast, 'smashcast'),
-		];
+			}
+			for ( var idx in state.obsInfo.sceneCollections ) {
+				let scene = state.obsInfo.sceneCollections[idx];
+				OBSSceneCollections.push(<div class={scene['sc-name'] == state.obsInfo.currentSceneCollection ? 'active' : ''}><span>{scene['sc-name']}</span></div>);
+			}
+			for ( var idx in state.obsInfo.profiles ) {
+				let profile = state.obsInfo.profiles[idx];
+				OBSProfiles.push(<div class={profile['profile-name'] == state.obsStatus.currentProfile ? 'active' : ''}><span>{profile['profile-name']}</span></div>);
+			}
+		}
 
 		return (
 			<div id="obs">
@@ -137,7 +150,21 @@ export default class ViewOBS extends Component {
 					{OBSInfo}
 				</div>
 				<div class="body">
-					Things
+					<div class="flex">
+						<div class="scenes">
+							<div class="title"><div>SCENES:</div><span class="info">[{OBSScenes.length}]</span></div>
+							{OBSScenes}
+							<br />
+							<div class="title"><div>SCENE COLLECTIONS:</div><span class="info">[{OBSSceneCollections.length}]</span></div>
+							{OBSSceneCollections}
+							<br />
+							<div class="title"><div>PROFILES (output settings):</div><span class="info">[{OBSProfiles.length}]</span></div>
+							{OBSProfiles}
+						</div>
+						<div class="somethnig">
+							<strong>TODO:</strong> put something here
+						</div>
+					</div>
 				</div>
 			</div>
 		);
