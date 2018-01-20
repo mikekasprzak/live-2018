@@ -151,7 +151,7 @@ export default class ViewOBS extends Component {
 				</div>
 				<div class="body">
 					<div class="flex">
-						<div class="scenes">
+						<div class="lists">
 							<div class="title"><div>SCENES:</div><span class="info">[{OBSScenes.length}]</span></div>
 							{OBSScenes}
 							<br />
@@ -161,8 +161,21 @@ export default class ViewOBS extends Component {
 							<div class="title"><div>PROFILES (output settings):</div><span class="info">[{OBSProfiles.length}]</span></div>
 							{OBSProfiles}
 						</div>
-						<div class="somethnig">
-							<strong>TODO:</strong> put something here
+						<div class="actions">
+							<div class="flex">
+								<div>Streaming:</div>
+								<UIButton>Start</UIButton>
+								<UIButton>Stop</UIButton>
+							</div>
+							<div class="flex">
+								<div>Recording:</div>
+								<UIButton>Start</UIButton>
+								<UIButton>Stop</UIButton>
+							</div>
+							<br />
+							<div>
+								<strong>TODO:</strong> put something here
+							</div>
 						</div>
 					</div>
 				</div>
