@@ -40,11 +40,17 @@ export default class ViewMain extends Component {
 		return (
 			<div id="main">
 				<div class="info">
-					<div><span>SERVICE:</span>{OBSStatus}{TwitchStatus}{YouTubeStatus}{MixerStatus}{SmashcastStatus}{TwitterStatus}{InstagramStatus}{FacebookStatus}</div>
+					<div><span>OBS STATUS:</span>{OBSStatus}</div>
 					<div><span>STREAM:</span>{(state.obs && state.obs.streaming) ? <span class="live">LIVE</span> : <span class="offline">OFFLINE</span>}</div>
 					<div><span>RECORD:</span>{(state.obs && state.obs.recording) ? <span class="live">YES</span> : <span class="offline">NO</span>}</div>
 				</div>
 				<div class="body">
+					Things
+				</div>
+				<div class="info2">
+					<div><span>SERVICE:</span>{TwitchStatus}{YouTubeStatus}{MixerStatus}{SmashcastStatus}{TwitterStatus}{InstagramStatus}{FacebookStatus}</div>
+				</div>
+				<div class="service">
 					<div class="flex">
 						<div id="title">
 							<div class="label">Title: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /> <UIIcon src="smashcast" /></div>

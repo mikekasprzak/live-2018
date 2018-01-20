@@ -12,13 +12,10 @@
 	}
 }
 
-#main > .info {
+#main > .info,
+#main > .info2 {
 	padding: 0.75em;
 	flex-shrink: 0;
-}
-
-#main > .info {
-	background: #eee;
 
 	& > div {
 		display: inline-block;
@@ -52,11 +49,26 @@
 	}
 }
 
+#main > .info {
+	background: #eee;
+}
+
+#main > .info2 {
+	background: #ddd;
+}
+
 #main > .body {
 	flex-grow: 1;
 	flex-shrink: 1;
 	overflow: auto;
+}
 
+#main > .service {
+	flex-shrink: 0;
+}
+
+#main > .body,
+#main > .service {
 	& > * {
 		margin: 0.5em;
 	}
