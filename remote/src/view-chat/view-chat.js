@@ -2,6 +2,7 @@ import {h, Component}					from 'preact/preact';
 import UIIcon							from 'ui/icon/icon';
 import UIImage							from 'ui/image/image';
 import UILink							from 'ui/link/link';
+import UIButton							from 'ui/button/button';
 
 export default class ViewChat extends Component {
 	constructor( props ) {
@@ -26,7 +27,7 @@ export default class ViewChat extends Component {
 		return (
 			<div id="chat">
 				<div class="info">
-					<div><span>Twitch: </span>{TwitchStatus}</div>
+					<div><span>TWITCH:</span>{TwitchStatus}</div>
 				</div>
 				<div class="feed">
 					{this.renderItem("David", "Are you my daddy?", 'twitch')}
@@ -34,7 +35,7 @@ export default class ViewChat extends Component {
 					{this.renderItem("David", "*tears*", 'twitch')}
 				</div>
 				<div class="reply">
-					The moon is while
+					<input type="text" /><UIButton>SEND</UIButton>
 				</div>
 			</div>
 		);

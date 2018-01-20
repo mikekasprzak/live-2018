@@ -13,6 +13,15 @@
 }
 
 #chat > .info {
+	& > div > * {
+		vertical-align: middle;
+		margin-left: 0.3em;
+
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+
 	& .on {
 		color: green;
 	}
@@ -33,7 +42,7 @@
 
 		& > * {
 			vertical-align: middle;
-			margin-left: 0.5em;
+			margin-left: 0.3em;
 
 			&:first-child {
 				margin-left: 0;
@@ -50,4 +59,37 @@
 }
 
 #chat > .reply {
+	display: flex;
+
+	& > * {
+		margin-left: 0.3em;
+
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+
+	& > input {
+		display: block;
+		width: 100%;
+
+		flex: 3;
+	}
+
+	& > .ui-button {
+		padding: 0.25em 1em;
+
+		background: #ddd;
+		color: #333;
+
+		&:hover {
+			background: red;
+			color: white;
+		}
+
+		&:active {
+			background: #ddd;
+			color: red;
+		}
+	}
 }
