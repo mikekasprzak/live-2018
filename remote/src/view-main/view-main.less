@@ -8,6 +8,10 @@
 
 	& .off {
 		color: red;
+
+		&:hover {
+			color: white;
+		}
 	}
 }
 
@@ -15,6 +19,20 @@
 #main > .info2 {
 	padding: 0.75em;
 	flex-shrink: 0;
+
+	& .ui-button {
+		display: inline-block;
+		padding: 0.25em 0.5em;
+		background: inherit;
+
+		&:hover {
+			background: red;
+		}
+
+		& svg {
+			display: block;
+		}
+	}
 
 	& > div {
 		display: inline-block;

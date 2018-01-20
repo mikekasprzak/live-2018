@@ -9,8 +9,8 @@ export default class ViewMain extends Component {
 
 		this.state = {
 			'obs': null,
-			'obsVersion': null,
 			'obsInfo': null,
+			'obsStatus': null,
 
 			'twitch': null,
 			'youtube': null,
@@ -21,39 +21,50 @@ export default class ViewMain extends Component {
 			'facebook': null,
 		};
 
+		this.obsConnect = this.obsConnect.bind(this);
 		this.obsHeartbeatEvent = this.obsHeartbeatEvent.bind(this);
 		this.obsStatusEvent = this.obsStatusEvent.bind(this);
 	}
 
 	componentWillMount() {
+		this.obsInit();
+		this.obsConnect();
+	}
+
+	obsInit() {
 		var OBS = new OBSWebSocket();
 		OBS.onStreamStatus(this.obsStatusEvent);
 		OBS.onHeartbeat(this.obsHeartbeatEvent);
 		OBS.onConnectionOpened(e => {
 			OBS.SetHeartbeat({'enable': true});
+
+			var Info = {};
 			OBS.GetVersion()
 				.then(r => {
-					this.setState({
-						'obsVersion': {
-							'version': r.obsStudioVersion,
-							'pluginVersion': r.obsWebsocketVersion
-						}
-					});
-				});
-//			OBS.GetStreamingStatus()
-//				.then(r => {
-//					this.setState({'obsInfo': r});
-//				});
-		});
-//		OBS.onConnectionClosed(e => {
-//			// TODO: Improve this
-//			this.setState({'obs': null});
-//		});
+					Info.version = r.obsStudioVersion;
+					Info.pluginVersion = r.obsWebsocketVersion;
 
-		OBS.connect({address: 'localhost:4444'})
-		.then(r => {
-			this.setState({'obs': OBS});
+					return OBS.GetRecordingFolder();
+				})
+				.then(r => {
+					Info.folder = r.recFolder;
+					this.setState({'obsInfo': Info});
+
+					return OBS.GetStreamingStatus();
+				})
+				.then(r => {
+					this.setState({'obsStatus': r});
+				});
 		});
+		OBS.onConnectionClosed(e => {
+			// TODO: Improve this
+			this.setState({'obsStatus': null});
+		});
+
+		this.setState({'obs': OBS});
+	}
+	obsConnect() {
+		this.state.obs.connect({address: 'localhost:4444'});
 	}
 
 	obsStatusEvent( e ) {
@@ -61,25 +72,25 @@ export default class ViewMain extends Component {
 	}
 	obsHeartbeatEvent( e ) {
 		//console.log(e);
-		this.setState({'obsInfo': e});
+		this.setState({'obsStatus': e});
 	}
 
-	renderStatus( status, service ) {
-		return <UIIcon class={status ? "on" : "off"} src={service} />;
+	renderStatus( status, service, func ) {
+		return <UIButton class={status ? "on" : "off"} onClick={func}><UIIcon src={service} /></UIButton>;
 	}
 
 	render( props, state ) {
-		const OBSStatus = this.renderStatus(state.obs, 'obs');
+		const OBSStatus = this.renderStatus(state.obs && state.obsStatus, 'obs', this.obsConnect);
 		let OBSInfo = [];
-		if ( state.obsVersion ) {
-			OBSInfo.push(<div><span>VERSION:</span><span class="offline">{state.obsVersion.version}</span></div>);
-			OBSInfo.push(<div><span>PLUGIN:</span><span class="offline">{state.obsVersion.pluginVersion}</span></div>);
-		}
 		if ( state.obsInfo ) {
-			OBSInfo.push(<div><span>STREAM:</span>{state.obsInfo.streaming ? <span class="live">{state.obsInfo.streamTimecode}</span> : <span class="offline">OFFLINE</span>}</div>);
-			OBSInfo.push(<div><span>RECORD:</span>{state.obsInfo.recording ? <span class="live">{state.obsInfo.recTimecode}</span> : <span class="offline">NO</span>}</div>);
+			OBSInfo.push(<div><span>VERSION:</span><span class="offline">{state.obsInfo.version}</span></div>);
+			OBSInfo.push(<div><span>PLUGIN:</span><span class="offline">{state.obsInfo.pluginVersion}</span></div>);
+		}
+		if ( state.obsStatus ) {
+			OBSInfo.push(<div><span>STREAM:</span>{state.obsStatus.streaming ? <span class="live">{state.obsStatus.streamTimecode}</span> : <span class="offline">OFFLINE</span>}</div>);
+			OBSInfo.push(<div><span>RECORD:</span>{state.obsStatus.recording ? <span class="live">{state.obsStatus.recTimecode}</span> : <span class="offline">NO</span>}</div>);
 
-			//OBSInfo.push(state.obsInfo.pulse ? '.' : '');
+			//OBSInfo.push(state.obsStatus.pulse ? '.' : '');
 		}
 
 		const ServiceStatus = [
