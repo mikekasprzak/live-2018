@@ -31,6 +31,7 @@ export default class ViewChat extends Component {
 				<div class="feed">
 					{this.renderItem("David", "Are you my daddy?", 'twitch')}
 					{this.renderItem("Chad", "...")}
+					{this.renderItem("David", "Defiantly, the father taketh the wide moon of the fortress upon itself to puncture the weather among the ford.", 'twitch')}
 					{this.renderItem("David", "*tears*", 'twitch')}
 				</div>
 				<div class="reply">
