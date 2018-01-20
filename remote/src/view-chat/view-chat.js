@@ -26,20 +26,20 @@ export default class ViewChat extends Component {
 	renderStatus( status ) {
 		return status ? <UIIcon class="on" src="checkmark" small /> : <UIIcon class="off" src="cross" small />;
 	}
+	renderStatus2( status, service ) {
+		return <UIIcon class={status ? "" : "off"} src="checkmark" />;
+	}
 
 	render( props, state ) {
-		const TwitchStatus = this.renderStatus(state.twitch);
-		const MixerStatus = this.renderStatus(state.mixer);
-		const SmashCastStatus = this.renderStatus(state.smashcast);
-		const TwitterStatus = this.renderStatus(state.twitter);
+		const TwitchStatus = this.renderStatus2(state.twitch, 'twitch');
+		const MixerStatus = this.renderStatus2(state.mixer, 'mixer');
+		const SmashCastStatus = this.renderStatus2(state.smashcast, 'smashcast');
+		const TwitterStatus = this.renderStatus2(state.twitter, 'twitter');
 
 		return (
 			<div id="chat">
 				<div class="info">
-					<div><span><UIIcon src="twitch" />:</span>{TwitchStatus}</div>
-					<div><span><UIIcon src="mixer" />:</span>{MixerStatus}</div>
-					<div><span><UIIcon src="smashcast" />:</span>{SmashCastStatus}</div>
-					<div><span><UIIcon src="twitter" />:</span>{TwitterStatus}</div>
+					<div><span>CHAT:</span>{TwitchStatus}{MixerStatus}{SmashCastStatus}{TwitterStatus}</div>
 				</div>
 				<div class="feed">
 					{this.renderItem("David", "Are you my daddy?", 'twitch')}
@@ -56,3 +56,8 @@ export default class ViewChat extends Component {
 		);
 	}
 }
+
+//					<div><span><UIIcon src="twitch" />:</span>{TwitchStatus}</div>
+//					<div><span><UIIcon src="mixer" />:</span>{MixerStatus}</div>
+//					<div><span><UIIcon src="smashcast" />:</span>{SmashCastStatus}</div>
+//					<div><span><UIIcon src="twitter" />:</span>{TwitterStatus}</div>
