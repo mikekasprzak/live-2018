@@ -106,6 +106,13 @@ export default class ViewMain extends Component {
 			this.renderStatus(state.facebook, 'facebook'),
 		];
 
+		const LiveStatus = [
+			this.renderStatus(state.twitch, 'twitch'),
+			this.renderStatus(state.youtube, 'youtube'),
+			this.renderStatus(state.mixer, 'mixer'),
+			this.renderStatus(state.smashcast, 'smashcast'),
+		];
+
 		return (
 			<div id="main">
 				<div class="info">
@@ -117,6 +124,7 @@ export default class ViewMain extends Component {
 				</div>
 				<div class="info2">
 					<div><span>SERVICE:</span>{ServiceStatus}</div>
+					<div><span>LIVE:</span>{LiveStatus}</div>
 				</div>
 				<div class="service">
 					<div class="flex">
