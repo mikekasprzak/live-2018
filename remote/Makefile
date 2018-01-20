@@ -7,8 +7,10 @@ INPUT_DIRS			+=	external/ui/
 INPUT_DIRS			+=	external/svgload/
 INPUT_DIRS			+=	external/hashbang/
 INPUT_DIRS			+=	common/icons/
+INPUT_DIRS			+=	external/3rd-party/obs-websocket/
 
 LINT_IGNORE			+=	external/preact/
+LINT_IGNORE			+=	external/3rd-party/obs-websocket/
 
 MAIN_JS				:=	$(TARGET)/src/main.js
 

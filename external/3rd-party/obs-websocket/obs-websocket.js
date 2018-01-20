@@ -1,9 +1,10 @@
 /*!
- * OBS WebSocket Javascript API (obs-websocket-js) v1.0.0
+ * OBS WebSocket Javascript API (obs-websocket-js) v1.1.0
  * Author: Brendan Hagan (haganbmj)
  * License: MIT
  * Repository: https://github.com/haganbmj/obs-websocket-js
- * Build Timestamp: 2017-12-31T09:24:44.444Z
+ * Build Timestamp: 2018-01-01 04:20:53+00:00
+ * Built from Commit: https://github.com/haganbmj/obs-websocket-js/commit/4af5288679ad19e0ec84f43fa33818d8c325a55b
  */
 var OBSWebSocket =
 /******/ (function(modules) { // webpackBootstrap
@@ -73,6 +74,33 @@ var OBSWebSocket =
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -262,7 +290,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate, process) {let nextTick;
@@ -299,41 +327,14 @@ module.exports = function (promise) {
   };
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7).setImmediate, __webpack_require__(0)))
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7).setImmediate, __webpack_require__(1)))
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* eslint-disable node/no-deprecated-api */
-var buffer = __webpack_require__(16)
+var buffer = __webpack_require__(17)
 var Buffer = buffer.Buffer
 
 // alternative to using Object.keys for old browsers
@@ -447,7 +448,7 @@ module.exports = {
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = __webpack_require__(20);
+exports = module.exports = __webpack_require__(21);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -637,17 +638,17 @@ function localstorage() {
   } catch (e) {}
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1)(Promise);
-const Socket = __webpack_require__(9);
+__webpack_require__(2)(Promise);
+const Socket = __webpack_require__(10);
 const Status = __webpack_require__(4);
 const debug = __webpack_require__(5)('obs-websocket-js:Core');
-const API = __webpack_require__(24);
+const API = __webpack_require__(25);
 
 let requestCounter = 0;
 
@@ -835,8 +836,9 @@ exports._unrefActive = exports.active = function(item) {
 
 // setimmediate attaches itself to the global object
 __webpack_require__(8);
-exports.setImmediate = setImmediate;
-exports.clearImmediate = clearImmediate;
+var global = __webpack_require__(9);
+exports.setImmediate = global.setImmediate;
+exports.clearImmediate = global.clearImmediate;
 
 
 /***/ }),
@@ -1030,20 +1032,40 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(1)))
 
 /***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1)(Promise);
-const WebSocket = __webpack_require__(10);
-const EventEmitter = __webpack_require__(11);
-const hash = __webpack_require__(12);
+/* WEBPACK VAR INJECTION */(function(global) {var win;
+
+if (typeof window !== "undefined") {
+    win = window;
+} else if (typeof global !== "undefined") {
+    win = global;
+} else if (typeof self !== "undefined"){
+    win = self;
+} else {
+    win = {};
+}
+
+module.exports = win;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(2)(Promise);
+const WebSocket = __webpack_require__(11);
+const EventEmitter = __webpack_require__(12);
+const hash = __webpack_require__(13);
 const Status = __webpack_require__(4);
 const debug = __webpack_require__(5)('obs-websocket-js:Socket');
-const logAmbiguousError = __webpack_require__(22);
-const camelCaseKeys = __webpack_require__(23);
+const logAmbiguousError = __webpack_require__(23);
+const camelCaseKeys = __webpack_require__(24);
 
 class Socket extends EventEmitter {
   constructor() {
@@ -1207,13 +1229,13 @@ module.exports = Socket;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = WebSocket;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -1521,10 +1543,10 @@ function isUndefined(arg) {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const SHA256 = __webpack_require__(13);
+const SHA256 = __webpack_require__(14);
 
 /**
  * SHA256 Hashing.
@@ -1550,7 +1572,7 @@ module.exports = function (salt = '', challenge = '', msg) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1561,8 +1583,8 @@ module.exports = function (salt = '', challenge = '', msg) {
  *
  */
 
-var inherits = __webpack_require__(14)
-var Hash = __webpack_require__(15)
+var inherits = __webpack_require__(15)
+var Hash = __webpack_require__(16)
 var Buffer = __webpack_require__(3).Buffer
 
 var K = [
@@ -1691,7 +1713,7 @@ module.exports = Sha256
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 if (typeof Object.create === 'function') {
@@ -1720,7 +1742,7 @@ if (typeof Object.create === 'function') {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Buffer = __webpack_require__(3).Buffer
@@ -1807,7 +1829,7 @@ module.exports = Hash
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1821,9 +1843,9 @@ module.exports = Hash
 
 
 
-var base64 = __webpack_require__(17)
-var ieee754 = __webpack_require__(18)
-var isArray = __webpack_require__(19)
+var base64 = __webpack_require__(18)
+var ieee754 = __webpack_require__(19)
+var isArray = __webpack_require__(20)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -3601,10 +3623,10 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3725,7 +3747,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -3815,7 +3837,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -3826,7 +3848,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -3842,7 +3864,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(21);
+exports.humanize = __webpack_require__(22);
 
 /**
  * Active `debug` instances.
@@ -4057,7 +4079,7 @@ function coerce(val) {
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 /**
@@ -4215,7 +4237,7 @@ function plural(ms, n, name) {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 /**
@@ -4239,7 +4261,7 @@ module.exports = function (debug, prefix, error) {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports) {
 
 /**
@@ -4266,7 +4288,7 @@ module.exports = function (obj) {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 // This file is generated, do not edit.

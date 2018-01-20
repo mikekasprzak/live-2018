@@ -9,6 +9,9 @@ export default class ViewMain extends Component {
 
 		this.state = {
 			'obs': null,
+			'obsVersion': null,
+			'obsInfo': null,
+
 			'twitch': null,
 			'youtube': null,
 			'mixer': null,
@@ -17,38 +20,89 @@ export default class ViewMain extends Component {
 			'instagram': null,
 			'facebook': null,
 		};
+
+		this.obsHeartbeatEvent = this.obsHeartbeatEvent.bind(this);
+		this.obsStatusEvent = this.obsStatusEvent.bind(this);
 	}
 
+	componentWillMount() {
+		var OBS = new OBSWebSocket();
+		OBS.onStreamStatus(this.obsStatusEvent);
+		OBS.onHeartbeat(this.obsHeartbeatEvent);
+		OBS.onConnectionOpened(e => {
+			OBS.SetHeartbeat({'enable': true});
+			OBS.GetVersion()
+				.then(r => {
+					this.setState({
+						'obsVersion': {
+							'version': r.obsStudioVersion,
+							'pluginVersion': r.obsWebsocketVersion
+						}
+					});
+				});
+//			OBS.GetStreamingStatus()
+//				.then(r => {
+//					this.setState({'obsInfo': r});
+//				});
+		});
+//		OBS.onConnectionClosed(e => {
+//			// TODO: Improve this
+//			this.setState({'obs': null});
+//		});
 
-//	renderStatus( status ) {
-//		return status ? <UIIcon class="on" src="checkmark" small /> : <UIIcon class="off" src="cross" small />;
-//	}
+		OBS.connect({address: 'localhost:4444'})
+		.then(r => {
+			this.setState({'obs': OBS});
+		});
+	}
+
+	obsStatusEvent( e ) {
+		console.log(e);
+	}
+	obsHeartbeatEvent( e ) {
+		//console.log(e);
+		this.setState({'obsInfo': e});
+	}
+
 	renderStatus( status, service ) {
-		return <UIIcon class={status ? "" : "off"} src={service} />;
+		return <UIIcon class={status ? "on" : "off"} src={service} />;
 	}
 
 	render( props, state ) {
 		const OBSStatus = this.renderStatus(state.obs, 'obs');
-		const TwitchStatus = this.renderStatus(state.twitch, 'twitch');
-		const YouTubeStatus = this.renderStatus(state.youtube, 'youtube');
-		const MixerStatus = this.renderStatus(state.mixer, 'mixer');
-		const SmashcastStatus = this.renderStatus(state.smashcast, 'smashcast');
-		const TwitterStatus = this.renderStatus(state.twitter, 'twitter');
-		const InstagramStatus = this.renderStatus(state.instagram, 'instagram');
-		const FacebookStatus = this.renderStatus(state.facebook, 'facebook');
+		let OBSInfo = [];
+		if ( state.obsVersion ) {
+			OBSInfo.push(<div><span>VERSION:</span><span class="offline">{state.obsVersion.version}</span></div>);
+			OBSInfo.push(<div><span>PLUGIN:</span><span class="offline">{state.obsVersion.pluginVersion}</span></div>);
+		}
+		if ( state.obsInfo ) {
+			OBSInfo.push(<div><span>STREAM:</span>{state.obsInfo.streaming ? <span class="live">{state.obsInfo.streamTimecode}</span> : <span class="offline">OFFLINE</span>}</div>);
+			OBSInfo.push(<div><span>RECORD:</span>{state.obsInfo.recording ? <span class="live">{state.obsInfo.recTimecode}</span> : <span class="offline">NO</span>}</div>);
+
+			//OBSInfo.push(state.obsInfo.pulse ? '.' : '');
+		}
+
+		const ServiceStatus = [
+			this.renderStatus(state.twitch, 'twitch'),
+			this.renderStatus(state.youtube, 'youtube'),
+			this.renderStatus(state.mixer, 'mixer'),
+			this.renderStatus(state.smashcast, 'smashcast'),
+			this.renderStatus(state.twitter, 'twitter'),
+			this.renderStatus(state.instagram, 'instagram'),
+			this.renderStatus(state.facebook, 'facebook'),
+		];
 
 		return (
 			<div id="main">
 				<div class="info">
-					<div><span>OBS STATUS:</span>{OBSStatus}</div>
-					<div><span>STREAM:</span>{(state.obs && state.obs.streaming) ? <span class="live">LIVE</span> : <span class="offline">OFFLINE</span>}</div>
-					<div><span>RECORD:</span>{(state.obs && state.obs.recording) ? <span class="live">YES</span> : <span class="offline">NO</span>}</div>
+					<div><span>OBS:</span>{OBSStatus}</div>
+					{OBSInfo}
 				</div>
 				<div class="body">
 					Things
 				</div>
 				<div class="info2">
-					<div><span>SERVICE:</span>{TwitchStatus}{YouTubeStatus}{MixerStatus}{SmashcastStatus}{TwitterStatus}{InstagramStatus}{FacebookStatus}</div>
+					<div><span>SERVICE:</span>{ServiceStatus}</div>
 				</div>
 				<div class="service">
 					<div class="flex">
