@@ -33,11 +33,11 @@ export default class ViewMain extends Component {
 					<div><span>SMASHCAST:</span>{SmashCastStatus}</div>
 				</div>
 				<div class="body">
-					<div class="label">Title:</div>
+					<div class="label">Title: <UIIcon src="twitch" /> <UIIcon src="youtube" /></div>
 					<div id="title" class="full">
 						<input type="text" /><UIButton>SET</UIButton>
 					</div>
-					<div class="label">Game:</div>
+					<div class="label">Game: <UIIcon src="twitch" /> <UIIcon src="youtube" /></div>
 					<div id="game" class="full">
 						<input type="text" /><UIButton>SET</UIButton>
 					</div>
