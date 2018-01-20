@@ -1,6 +1,7 @@
 import {h, render, Component}			from "preact/preact";
 
-import ViewMain							from "view-main/view-main";
+import ViewOBS							from "view-obs/view-obs";
+import ViewStream						from "view-stream/view-stream";
 import ViewChat							from "view-chat/view-chat";
 
 // @ifdef DEBUG
@@ -72,7 +73,10 @@ class Main extends Component {
 
 		return (
 			<div id="content">
-				<ViewMain />
+				<div>
+					<ViewOBS />
+					<ViewStream />
+				</div>
 				<ViewChat />
 			</div>
 		);

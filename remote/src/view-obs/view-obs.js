@@ -3,7 +3,7 @@ import UIIcon							from 'ui/icon/icon';
 import UIImage							from 'ui/image/image';
 import UIButton							from 'ui/button/button';
 
-export default class ViewMain extends Component {
+export default class ViewOBS extends Component {
 	constructor( props ) {
 		super(props);
 
@@ -11,14 +11,6 @@ export default class ViewMain extends Component {
 			'obs': null,
 			'obsInfo': null,
 			'obsStatus': null,
-
-			'twitch': null,
-			'youtube': null,
-			'mixer': null,
-			'smashcast': null,
-			'twitter': null,
-			'instagram': null,
-			'facebook': null,
 		};
 
 		this.obsConnect = this.obsConnect.bind(this);
@@ -139,7 +131,7 @@ export default class ViewMain extends Component {
 		];
 
 		return (
-			<div id="main">
+			<div id="obs">
 				<div class="info">
 					<div><span>OBS:</span>{OBSStatus}</div>
 					{OBSInfo}
@@ -147,56 +139,7 @@ export default class ViewMain extends Component {
 				<div class="body">
 					Things
 				</div>
-				<div class="info2">
-					<div><span>SERVICE:</span>{ServiceStatus}</div>
-					<div><span>LIVE:</span>{LiveStatus}</div>
-				</div>
-				<div class="service">
-					<div class="flex">
-						<div id="title">
-							<div class="label">Title: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /> <UIIcon src="smashcast" /></div>
-							<div class="full">
-								<input type="text" /><UIButton>SET</UIButton>
-							</div>
-						</div>
-						<div id="game">
-							<div class="label">Game: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /> <UIIcon src="smashcast" /></div>
-							<div class="full">
-								<input type="text" /><UIButton>SET</UIButton>
-							</div>
-						</div>
-					</div>
-					<div class="flex">
-						<div>
-							<div class="label">Community: <UIIcon src="twitch" /></div>
-							<div class="full">
-								<input type="text" /><UIButton>SET</UIButton>
-							</div>
-						</div>
-						<div>
-							<div class="label">Community: <UIIcon src="twitch" /></div>
-							<div class="full">
-								<input type="text" /><UIButton>SET</UIButton>
-							</div>
-						</div>
-						<div>
-							<div class="label">Community: <UIIcon src="twitch" /></div>
-							<div class="full">
-								<input type="text" /><UIButton>SET</UIButton>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		);
 	}
 }
-
-//					<div><span><UIIcon src="obs" />:</span>{OBSStatus}</div>
-//					<div><span><UIIcon src="twitch" />:</span>{TwitchStatus}</div>
-//					<div><span><UIIcon src="youtube" />:</span>{YouTubeStatus}</div>
-//					<div><span><UIIcon src="mixer" />:</span>{MixerStatus}</div>
-//					<div><span><UIIcon src="smashcast" />:</span>{SmashCastStatus}</div>
-//					<div><span><UIIcon src="twitter" />:</span>{TwitterStatus}</div>
-//					<div><span><UIIcon src="facebook" />:</span>{FacebookStatus}</div>
-//					<div><span><UIIcon src="instagram" />:</span>{InstagramStatus}</div>
