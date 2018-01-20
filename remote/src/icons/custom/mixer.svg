@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32"
+   height="32"
+   version="1.1"
+   id="svg1051"
+   sodipodi:docname="mixer.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata1057">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Mixer (website) logo</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs1055" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="704"
+     id="namedview1053"
+     showgrid="false"
+     inkscape:zoom="5.1589415"
+     inkscape:cx="-17.504398"
+     inkscape:cy="12.660867"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1049" />
+  <title
+     id="title1041">Mixer (website) logo</title>
+  <g
+     id="g1049"
+     transform="translate(0,-168.759)">
+    <path
+       d="m 5.9574809,171.94354 c -1.1525707,-1.544 -3.3854673,-1.75723 -4.8094278,-0.45927 -1.25852326,1.1432 -1.34401536,3.10356 -0.33003928,4.46746 l 6.53318708,8.77586 -6.58090361,8.83948 c -1.01596426,1.3639 -0.92848398,3.32426 0.33003931,4.46746 1.4245191,1.29751 3.6574873,1.08335 4.8094277,-0.46126 l 9.1854307,-12.33869 c 0.224677,-0.30213 0.224677,-0.71583 0,-1.01796 z"
+       id="path1043"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.15030704"
+       sodipodi:nodetypes="cccccccccc" />
+    <path
+       d="m 26.117712,171.94513 c 1.15194,-1.54461 3.384908,-1.75877 4.809427,-0.46126 1.258523,1.14321 1.344016,3.10356 0.33004,4.46746 l -6.533188,8.77586 6.580904,8.83949 c 1.015964,1.36389 0.928484,3.32425 -0.330039,4.46746 -1.424519,1.2975 -3.657488,1.08334 -4.809428,-0.46126 l -9.185431,-12.3387 c -0.224677,-0.30213 -0.224677,-0.71583 0,-1.01795 z"
+       id="path1045"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke-width:0.19881883"
+       sodipodi:nodetypes="cccccccccc" />
+  </g>
+</svg>
