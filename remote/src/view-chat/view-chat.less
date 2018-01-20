@@ -24,12 +24,21 @@
 #chat > .info {
 	background: #ddd;
 
-	& > div > * {
-		vertical-align: middle;
-		margin-left: 0.3em;
+	& > div {
+		display: inline-block;
+		margin-left: 1em;
 
 		&:first-child {
 			margin-left: 0;
+		}
+
+		& > * {
+			vertical-align: middle;
+			margin-left: 0.3em;
+
+			&:first-child {
+				margin-left: 0;
+			}
 		}
 	}
 }
