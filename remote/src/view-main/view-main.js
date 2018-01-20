@@ -59,6 +59,26 @@ export default class ViewMain extends Component {
 							</div>
 						</div>
 					</div>
+					<div class="flex">
+						<div>
+							<div class="label">Community: <UIIcon src="twitch" /></div>
+							<div class="full">
+								<input type="text" /><UIButton>SET</UIButton>
+							</div>
+						</div>
+						<div>
+							<div class="label">Community: <UIIcon src="twitch" /></div>
+							<div class="full">
+								<input type="text" /><UIButton>SET</UIButton>
+							</div>
+						</div>
+						<div>
+							<div class="label">Community: <UIIcon src="twitch" /></div>
+							<div class="full">
+								<input type="text" /><UIButton>SET</UIButton>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		);
