@@ -27,9 +27,9 @@ export default class ViewMain extends Component {
 			<div id="main">
 				<div class="info">
 					<div><span>OBS:</span>{OBSStatus}</div>
-					<div><span><UIIcon src="twitch" /> TWITCH:</span>{TwitchStatus}</div>
-					<div><span><UIIcon src="youtube" /> YOUTUBE:</span>{YouTubeStatus}</div>
-					<div><span><UIIcon src="mixer" /> MIXER:</span>{MixerStatus}</div>
+					<div><span><UIIcon src="twitch" />:</span>{TwitchStatus}</div>
+					<div><span><UIIcon src="youtube" />:</span>{YouTubeStatus}</div>
+					<div><span><UIIcon src="mixer" />:</span>{MixerStatus}</div>
 					<div><span>SMASHCAST:</span>{SmashCastStatus}</div>
 				</div>
 				<div class="body">
