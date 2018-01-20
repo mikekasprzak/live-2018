@@ -35,13 +35,13 @@ export default class ViewMain extends Component {
 				<div class="body">
 					<div class="flex">
 						<div id="title">
-							<div class="label">Title: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /></div>
+							<div class="label">Title: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /> <UIIcon src="smashcast" /></div>
 							<div class="full">
 								<input type="text" /><UIButton>SET</UIButton>
 							</div>
 						</div>
 						<div id="game">
-							<div class="label">Game: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /></div>
+							<div class="label">Game: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /> <UIIcon src="smashcast" /></div>
 							<div class="full">
 								<input type="text" /><UIButton>SET</UIButton>
 							</div>
