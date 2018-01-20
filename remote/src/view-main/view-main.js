@@ -17,11 +17,11 @@ export default class ViewMain extends Component {
 	}
 
 	render( props, state ) {
-		const OBSStatus = state.obs ? <UIIcon class="on" src="checkmark" /> : <UIIcon class="off" src="cross" />;
-		const TwitchStatus = state.twitch ? <UIIcon class="on" src="checkmark" /> : <UIIcon class="off" src="cross" />;
-		const YouTubeStatus = state.youtube ? <UIIcon class="on" src="checkmark" /> : <UIIcon class="off" src="cross" />;
-		const MixerStatus = state.mixer ? <UIIcon class="on" src="checkmark" /> : <UIIcon class="off" src="cross" />;
-		const SmashCastStatus = state.smashcast ? <UIIcon class="on" src="checkmark" /> : <UIIcon class="off" src="cross" />;
+		const OBSStatus = state.obs ? <UIIcon class="on" src="checkmark" small /> : <UIIcon class="off" src="cross" small />;
+		const TwitchStatus = state.twitch ? <UIIcon class="on" src="checkmark" small /> : <UIIcon class="off" src="cross" small />;
+		const YouTubeStatus = state.youtube ? <UIIcon class="on" src="checkmark" small /> : <UIIcon class="off" src="cross" small />;
+		const MixerStatus = state.mixer ? <UIIcon class="on" src="checkmark" small /> : <UIIcon class="off" src="cross" small />;
+		const SmashCastStatus = state.smashcast ? <UIIcon class="on" src="checkmark" small /> : <UIIcon class="off" src="cross" small />;
 
 		return (
 			<div id="main">
