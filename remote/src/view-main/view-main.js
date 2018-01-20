@@ -64,7 +64,10 @@ export default class ViewMain extends Component {
 		this.setState({'obs': OBS});
 	}
 	obsConnect() {
-		this.state.obs.connect({address: 'localhost:4444'});
+		this.state.obs.connect({
+			'address': CONFIG.obsServer,
+			'password': CONFIG.obsPassword,
+		});
 	}
 
 	obsStatusEvent( e ) {

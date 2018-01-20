@@ -7,6 +7,9 @@ import ViewChat							from "view-chat/view-chat";
 //import {}								from 'preact-devtools/devtools';
 // @endif
 
+window.CONFIG = Object.assign({
+	'obsServer': "localhost:4444",
+}, window.CONFIG || {});
 
 class Main extends Component {
 	constructor( props ) {
