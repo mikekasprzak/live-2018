@@ -1,7 +1,6 @@
 import {h, Component}					from 'preact/preact';
 import UIIcon							from 'ui/icon/icon';
 import UIImage							from 'ui/image/image';
-import UILink							from 'ui/link/link';
 import UIButton							from 'ui/button/button';
 
 export default class ViewChat extends Component {
