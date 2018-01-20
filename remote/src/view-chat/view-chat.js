@@ -21,7 +21,7 @@ export default class ViewChat extends Component {
 	}
 
 	render( props, state ) {
-		const TwitchStatus = state.twitch ? <UIIcon class="on" src="checkmark" /> : <UIIcon class="off" src="cross" />;
+		const TwitchStatus = state.twitch ? <UIIcon class="on" src="checkmark" small /> : <UIIcon class="off" src="cross" small />;
 
 		return (
 			<div id="chat">
