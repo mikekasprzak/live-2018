@@ -29,19 +29,19 @@ export default class ViewMain extends Component {
 					<div><span>OBS:</span>{OBSStatus}</div>
 					<div><span><UIIcon src="twitch" /> TWITCH:</span>{TwitchStatus}</div>
 					<div><span><UIIcon src="youtube" /> YOUTUBE:</span>{YouTubeStatus}</div>
-					<div><span>MIXER:</span>{MixerStatus}</div>
+					<div><span><UIIcon src="mixer" /> MIXER:</span>{MixerStatus}</div>
 					<div><span>SMASHCAST:</span>{SmashCastStatus}</div>
 				</div>
 				<div class="body">
 					<div class="flex">
 						<div id="title">
-							<div class="label">Title: <UIIcon src="twitch" /> <UIIcon src="youtube" /></div>
+							<div class="label">Title: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /></div>
 							<div class="full">
 								<input type="text" /><UIButton>SET</UIButton>
 							</div>
 						</div>
 						<div id="game">
-							<div class="label">Game: <UIIcon src="twitch" /> <UIIcon src="youtube" /></div>
+							<div class="label">Game: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /></div>
 							<div class="full">
 								<input type="text" /><UIButton>SET</UIButton>
 							</div>
