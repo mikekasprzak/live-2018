@@ -13,11 +13,13 @@
 }
 
 #main > .info {
-	margin: 0.75em;
+	padding: 0.75em;
 	flex-shrink: 0;
 }
 
 #main > .info {
+	background: #eee;
+
 	& > div {
 		display: inline-block;
 		margin-left: 1em;
@@ -37,8 +39,36 @@
 	}
 }
 
-#main > .feed {
+#main > .body {
 	flex-grow: 1;
 	flex-shrink: 1;
 	overflow: auto;
+
+	& > * {
+		margin: 0.5em;
+	}
+
+	& .label {
+		margin-bottom: 0;
+		font-size: 0.8em;
+
+		color: #444;
+	}
+
+	& > .full {
+		margin-top: 0;
+		display: flex;
+
+		& > input {
+			flex: 9;
+		}
+
+		& > * {
+			margin-left: 0.3em;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	}
 }

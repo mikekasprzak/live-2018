@@ -27,13 +27,20 @@ export default class ViewMain extends Component {
 			<div id="main">
 				<div class="info">
 					<div><span>OBS:</span>{OBSStatus}</div>
-					<div><span>TWITCH:</span>{TwitchStatus}</div>
-					<div><span>YOUTUBE:</span>{YouTubeStatus}</div>
+					<div><span><UIIcon src="twitch" /> TWITCH:</span>{TwitchStatus}</div>
+					<div><span><UIIcon src="youtube" /> YOUTUBE:</span>{YouTubeStatus}</div>
 					<div><span>MIXER:</span>{MixerStatus}</div>
 					<div><span>SMASHCAST:</span>{SmashCastStatus}</div>
 				</div>
 				<div class="body">
-					Body boo
+					<div class="label">Title:</div>
+					<div id="title" class="full">
+						<input type="text" /><UIButton>SET</UIButton>
+					</div>
+					<div class="label">Game:</div>
+					<div id="game" class="full">
+						<input type="text" /><UIButton>SET</UIButton>
+					</div>
 				</div>
 			</div>
 		);

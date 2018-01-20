@@ -21,12 +21,12 @@ export default class ViewChat extends Component {
 	}
 
 	render( props, state ) {
-		var TwitchStatus = state.twitch ? <UIIcon class="on" src="checkmark" /> : <UIIcon class="off" src="cross" />;
+		const TwitchStatus = state.twitch ? <UIIcon class="on" src="checkmark" /> : <UIIcon class="off" src="cross" />;
 
 		return (
 			<div id="chat">
 				<div class="info">
-					<div><span>TWITCH:</span>{TwitchStatus}</div>
+					<div><UIIcon src="twitch" /><span>:</span>{TwitchStatus}</div>
 				</div>
 				<div class="feed">
 					{this.renderItem("David", "Are you my daddy?", 'twitch')}

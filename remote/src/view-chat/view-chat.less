@@ -17,11 +17,13 @@
 
 #chat > .info,
 #chat > .reply {
-	margin: 0.75em;
+	padding: 0.75em;
 	flex-shrink: 0;
 }
 
 #chat > .info {
+	background: #ddd;
+
 	& > div > * {
 		vertical-align: middle;
 		margin-left: 0.3em;
@@ -33,6 +35,8 @@
 }
 
 #chat > .feed {
+	padding: 0 0.75em;
+
 	flex-grow: 1;
 	flex-shrink: 1;
 	overflow: auto;
@@ -71,9 +75,6 @@
 	}
 
 	& > input {
-		display: block;
-		width: 100%;
-
 		flex: 3;
 	}
 }

@@ -14,14 +14,6 @@ body {
 	display: flex;
 	height: 100%;
 
-	& > div {
-		padding-left: 0.5em;
-
-		&:first-child {
-			padding-left: 0;
-		}
-	}
-
 	& > #main {
 		flex: 3;
 		height: 100%;
@@ -30,22 +22,5 @@ body {
 	& > #chat {
 		flex: 1;
 		height: 100%;
-	}
-}
-
-.ui-button {
-	padding: 0.25em 1em;
-
-	background: #ccc;
-	color: #333;
-
-	&:hover {
-		background: red;
-		color: white;
-	}
-
-	&:active {
-		background: white;
-		color: red;
 	}
 }
