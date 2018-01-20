@@ -55,7 +55,26 @@
 		color: #444;
 	}
 
-	& > .full {
+	& .flex {
+		display: flex;
+
+		& > * {
+			margin-left: 1em;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	}
+
+	& #title {
+		flex: 2;
+	}
+	& #game {
+		flex: 1;
+	}
+
+	& .full {
 		margin-top: 0;
 		display: flex;
 
