@@ -43,11 +43,36 @@ export default class ViewMain extends Component {
 				.then(r => {
 					Info.version = r.obsStudioVersion;
 					Info.pluginVersion = r.obsWebsocketVersion;
-
 					return OBS.GetRecordingFolder();
 				})
 				.then(r => {
 					Info.folder = r.recFolder;
+					return OBS.ListProfiles();
+				})
+				.then(r => {
+					Info.profiles = r.profiles;
+					return OBS.GetSceneList();
+				})
+				.then(r => {
+					Info.scenes = r.scenes;
+					return OBS.ListSceneCollections();
+				})
+				.then(r => {
+					Info.sceneCollections = r.sceneCollections;
+					return OBS.GetSourcesList();
+				})
+				.then(r => {
+					Info.sources = r.sources;
+//					return OBS.GetSourcesTypesList();
+//				})
+//				.then(r => {
+//					Info.sourcesTypes = r.ids;
+					return OBS.GetTransitionList();
+				})
+				.then(r => {
+					Info.transitions = r.transitions;
+
+					console.log(Info);
 					this.setState({'obsInfo': Info});
 
 					return OBS.GetStreamingStatus();
