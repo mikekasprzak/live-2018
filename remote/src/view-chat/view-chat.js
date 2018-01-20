@@ -8,7 +8,7 @@ export default class ViewChat extends Component {
 		super(props);
 
 		this.state = {
-			'twitch': false,
+			'twitch': null,
 		};
 	}
 

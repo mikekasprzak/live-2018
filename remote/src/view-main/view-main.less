@@ -1,0 +1,44 @@
+
+#main {
+	display: flex;
+	flex-direction: column;
+
+	& .on {
+		color: green;
+	}
+
+	& .off {
+		color: red;
+	}
+}
+
+#main > .info {
+	margin: 0.75em;
+	flex-shrink: 0;
+}
+
+#main > .info {
+	& > div {
+		display: inline-block;
+		margin-left: 1em;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		& > * {
+			vertical-align: middle;
+			margin-left: 0.3em;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+#main > .feed {
+	flex-grow: 1;
+	flex-shrink: 1;
+	overflow: auto;
+}
