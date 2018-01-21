@@ -120,6 +120,12 @@ export default class ViewOBS extends Component {
 		});
 	}
 
+	obsSetScene( name ) {
+		this.state.obs.SetCurrentScene({'scene-name': name}).catch(e => {
+			console.log(e);
+		});
+	}
+
 	obsStatusEvent( e ) {
 		//console.log(e);
 		this.setState({'obsStream': e});
@@ -158,7 +164,7 @@ export default class ViewOBS extends Component {
 				OBSScenes.push(
 					<div class={scene.name == state.obsStatus.currentScene ? 'active' : ''}>
 						<div><span>{scene.name}</span><span class="info">[{scene.sources.length}]</span></div>
-						<UIButton>SET</UIButton>
+						<UIButton onclick={this.obsSetScene.bind(this, scene.name)}>SET</UIButton>
 					</div>
 				);
 
