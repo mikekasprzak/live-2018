@@ -11,11 +11,18 @@ export default class ViewOBS extends Component {
 			'obs': null,
 			'obsInfo': null,
 			'obsStatus': null,
+			'obsStream': null,
 		};
 
 		this.obsConnect = this.obsConnect.bind(this);
 		this.obsHeartbeatEvent = this.obsHeartbeatEvent.bind(this);
 		this.obsStatusEvent = this.obsStatusEvent.bind(this);
+
+
+		this.obsStartStreaming = this.obsStartStreaming.bind(this);
+		this.obsStopStreaming = this.obsStopStreaming.bind(this);
+		this.obsStartRecording = this.obsStartRecording.bind(this);
+		this.obsStopRecording = this.obsStopRecording.bind(this);
 	}
 
 	componentWillMount() {
@@ -91,8 +98,31 @@ export default class ViewOBS extends Component {
 		});
 	}
 
+	obsStartStreaming() {
+		this.state.obs.StartStreaming().catch(e => {
+			console.log(e);
+		});
+	}
+	obsStopStreaming() {
+		this.state.obs.StopStreaming().catch(e => {
+			console.log(e);
+		});
+	}
+
+	obsStartRecording() {
+		this.state.obs.StartRecording().catch(e => {
+			console.log(e);
+		});
+	}
+	obsStopRecording() {
+		this.state.obs.StopRecording().catch(e => {
+			console.log(e);
+		});
+	}
+
 	obsStatusEvent( e ) {
-		console.log(e);
+		//console.log(e);
+		this.setState({'obsStream': e});
 	}
 	obsHeartbeatEvent( e ) {
 		//console.log(e);
@@ -143,6 +173,16 @@ export default class ViewOBS extends Component {
 			}
 		}
 
+		let OBSStreaming = [];
+		if ( state.obsStream ) {
+			let Clock = new Date(null);
+			Clock.setSeconds(state.obsStream.totalStreamTime);
+
+			OBSStreaming.push(<div>KBits: <strong>{state.obsStream.kbitsPerSec}</strong> (Bytes: <strong>{state.obsStream.bytesPerSec}</strong>)</div>);
+			OBSStreaming.push(<div>Frames: <strong>{state.obsStream.numTotalFrames}</strong> (Dropped: <strong>{state.obsStream.numDroppedFrames}</strong> <span title="state.obsStream.strain">[{Math.round(state.obsStream.strain)}%])</span></div>);
+			OBSStreaming.push(<div>FPS: <strong title={state.obsStream.fps}>{Math.round(state.obsStream.fps)}</strong> (Time: <strong>{Clock.toISOString().substr(11, 8)}</strong>)</div>);
+		}
+
 		return (
 			<div id="obs">
 				<div class="info">
@@ -162,15 +202,20 @@ export default class ViewOBS extends Component {
 							{OBSProfiles}
 						</div>
 						<div class="actions">
+							<div>
+								<div class="title">STREAM INFO:</div>
+								{OBSStreaming}
+							</div>
+							<br />
 							<div class="flex">
 								<div>Streaming:</div>
-								<UIButton>Start</UIButton>
-								<UIButton>Stop</UIButton>
+								<UIButton onclick={this.obsStartStreaming}>Start</UIButton>
+								<UIButton onclick={this.obsStopStreaming}>Stop</UIButton>
 							</div>
 							<div class="flex">
 								<div>Recording:</div>
-								<UIButton>Start</UIButton>
-								<UIButton>Stop</UIButton>
+								<UIButton onclick={this.obsStartRecording}>Start</UIButton>
+								<UIButton onclick={this.obsStopRecording}>Stop</UIButton>
 							</div>
 							<br />
 							<div>
