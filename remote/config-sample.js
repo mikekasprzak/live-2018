@@ -7,4 +7,7 @@ var CONFIG = {
 //	'obsPassword': "123456789",
 
 	// Twitch
+	'twitchName': null,
+	'twitchAppClientId': null,
+	'twitchAppClientSecret': null,
 };

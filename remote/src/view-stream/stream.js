@@ -3,6 +3,8 @@ import UIIcon							from 'ui/icon/icon';
 import UIImage							from 'ui/image/image';
 import UIButton							from 'ui/button/button';
 
+import $Twitch							from 'twitch/twitch';
+
 export default class ViewStream extends Component {
 	constructor( props ) {
 		super(props);
@@ -19,6 +21,12 @@ export default class ViewStream extends Component {
 	}
 
 	componentWillMount() {
+		if ( CONFIG.twitchName ) {
+			$Twitch.FetchUserByName(CONFIG.twitchName)
+				.then(r => {
+					console.log(r);
+				});
+		}
 	}
 
 	renderStatus( status, service, func ) {
