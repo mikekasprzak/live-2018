@@ -27,6 +27,8 @@ function getChatsById( id ) {
 }
 
 
+// https://dev.mixer.com/reference/chat/index.html
+
 function chatConnect( server, id, func ) {
 	var socket = new WebSocket(server);
 

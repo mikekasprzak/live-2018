@@ -5,6 +5,7 @@ import UIButton							from 'ui/button/button';
 
 import $Twitch							from 'twitch/twitch';
 import $Mixer							from 'mixer/mixer';
+import $Smashcast						from 'smashcast/smashcast';
 
 export default class ViewStream extends Component {
 	constructor( props ) {
@@ -67,7 +68,6 @@ export default class ViewStream extends Component {
 			});
 		}
 
-		//13120
 		if ( CONFIG.mixerName ) {
 			let Session = null;
 
@@ -84,13 +84,46 @@ export default class ViewStream extends Component {
 				if ( r ) {
 					Session.chats = r;
 
-					$Mixer.chatConnect(r.endpoints[0], Session.user.id, function( event ) {
-						console.log(JSON.parse(event.data));
-					});
+//					$Mixer.chatConnect(r.endpoints[0], Session.user.id, function( event ) {
+//						console.log(JSON.parse(event.data));
+//					});
 				}
 			})
 			.then(r => {
 				this.setState({'mixer': Session});
+				console.log(Session);
+			});
+		}
+
+
+		if ( CONFIG.smashcastName ) {
+			let Session = null;
+
+			$Smashcast.getChats()
+			.then(r => {
+				if ( r ) {
+					Session = {};
+					Session.chats = r;
+
+					return r;
+				}
+			})
+			.then(r => {
+				if ( r ) {
+					//let server = "wss://"+Session.chats[0].server_ip;
+					//let server = "wss://" + Session.chats[0].server_ip + "/socket.io/1/websocket/";
+
+					let server = "wss://"+ Session.chats[0].server_ip +"/socket.io/?EIO=3&transport=websocket";
+					let channel = 1134629;//CONFIG.smashcastName;
+
+					$Smashcast.chatConnect(server, channel, function( event ) {
+						console.log(event);
+						//console.log(JSON.parse(event.data));
+					});
+				}
+			})
+			.then(r => {
+				this.setState({'smashcast': Session});
 				console.log(Session);
 			});
 		}

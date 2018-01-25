@@ -15,4 +15,9 @@ var CONFIG = {
 	// Mixer
 	'mixerName': null,
 //	'mixerId': null,
+
+	// Smashcast
+	'smashcastName': null,
+	'smashcastAppToken': null,
+	'smashcastAppSecret': null,
 };
