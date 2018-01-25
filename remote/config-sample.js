@@ -8,6 +8,11 @@ var CONFIG = {
 
 	// Twitch
 	'twitchName': null,
+//	'twitchId': null,
 	'twitchAppClientId': null,
 	'twitchAppClientSecret': null,
+
+	// Mixer
+	'mixerName': null,
+//	'mixerId': null,
 };

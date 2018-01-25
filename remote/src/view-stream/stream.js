@@ -4,6 +4,7 @@ import UIImage							from 'ui/image/image';
 import UIButton							from 'ui/button/button';
 
 import $Twitch							from 'twitch/twitch';
+import $Mixer							from 'mixer/mixer';
 
 export default class ViewStream extends Component {
 	constructor( props ) {
@@ -17,15 +18,93 @@ export default class ViewStream extends Component {
 			'twitter': null,
 			'instagram': null,
 			'facebook': null,
+
+			'twitchLive': null,
+			'youtubeLive': null,
+			'mixerLive': null,
+			'smashcastLive': null,
 		};
+
+		this.setTitle = this.setTitle.bind(this);
+		this.setGame = this.setGame.bind(this);
 	}
 
 	componentWillMount() {
 		if ( CONFIG.twitchName ) {
-			$Twitch.FetchUserByName(CONFIG.twitchName)
-				.then(r => {
-					console.log(r);
-				});
+			let Session = null;
+
+			$Twitch.getUserByName(CONFIG.twitchName)
+			.then(r => {
+				if ( r && r.data && r.data.length ) {
+					Session = {};
+					Session.user = r.data[0];
+
+					return $Twitch.getOldAuth();
+				}
+			})
+			.then(r => {
+				if ( r ) {
+					Session.auth = r;
+
+					return $Twitch.getOldChannelById(Session.user.id);
+				}
+			})
+			.then(r => {
+				if ( r ) {
+					Session.channel = r;
+
+					return $Twitch.getOldChannelCommunitiesById(Session.user.id);
+				}
+			})
+			.then(r => {
+				if ( r ) {
+					Session.community = r.communities;
+				}
+			})
+			.then(r => {
+				this.setState({'twitch': Session});
+				console.log(Session);
+			});
+		}
+
+		//13120
+		if ( CONFIG.mixerName ) {
+			let Session = null;
+
+			$Mixer.getUserByName(CONFIG.mixerName)
+			.then(r => {
+				if ( r ) {
+					Session = {};
+					Session.user = r;
+
+					return $Mixer.getChatsById(Session.user.id);
+				}
+			})
+			.then(r => {
+				if ( r ) {
+					Session.chats = r;
+
+					$Mixer.chatConnect(r.endpoints[0], Session.user.id, function( event ) {
+						console.log(JSON.parse(event.data));
+					});
+				}
+			})
+			.then(r => {
+				this.setState({'mixer': Session});
+				console.log(Session);
+			});
+		}
+	}
+
+	setTitle( text ) {
+		if ( this.state.twitch ) {
+			$Twitch.setOldChannelById(this.state.twitch.user.id, text);
+		}
+	}
+
+	setGame( text ) {
+		if ( this.state.twitch ) {
+			$Twitch.setOldChannelById(this.state.twitch.user.id, null, text);
 		}
 	}
 
@@ -45,10 +124,10 @@ export default class ViewStream extends Component {
 		];
 
 		const LiveStatus = [
-			this.renderStatus(state.twitch, 'twitch'),
-			this.renderStatus(state.youtube, 'youtube'),
-			this.renderStatus(state.mixer, 'mixer'),
-			this.renderStatus(state.smashcast, 'smashcast'),
+			this.renderStatus(state.twitchLive, 'twitch'),
+			this.renderStatus(state.youtubeLive, 'youtube'),
+			this.renderStatus(state.mixerLive, 'mixer'),
+			this.renderStatus(state.smashcastLive, 'smashcast'),
 		];
 
 		return (
@@ -60,35 +139,35 @@ export default class ViewStream extends Component {
 				<div class="body">
 					<div class="flex">
 						<div id="title">
-							<div class="label">Title: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /> <UIIcon src="smashcast" /></div>
+							<div class="label">Title: <UIIcon src="twitch" class={cN(state.twitch ? "on" : "off")} /> <UIIcon src="youtube" class={cN(state.youtube ? "on" : "off")} /> <UIIcon src="mixer" class={cN(state.mixer ? "on" : "off")} /> <UIIcon src="smashcast" class={cN(state.smashcast ? "on" : "off")} /></div>
 							<div class="full">
-								<input type="text" /><UIButton>SET</UIButton>
+								<input type="text" value={state.twitch ? state.twitch.channel.status : ''} /><UIButton onclick={this.setTitle}>SET</UIButton>
 							</div>
 						</div>
 						<div id="game">
-							<div class="label">Game: <UIIcon src="twitch" /> <UIIcon src="youtube" /> <UIIcon src="mixer" /> <UIIcon src="smashcast" /></div>
+							<div class="label">Game: <UIIcon src="twitch" class={cN(state.twitch ? "on" : "off")} /> <UIIcon src="youtube" class={cN(state.youtube ? "on" : "off")} /> <UIIcon src="mixer" class={cN(state.mixer ? "on" : "off")} /> <UIIcon src="smashcast" class={cN(state.smashcast ? "on" : "off")} /></div>
 							<div class="full">
-								<input type="text" /><UIButton>SET</UIButton>
+								<input type="text" value={state.twitch ? state.twitch.channel.game : ''} /><UIButton onclick={this.setGame}>SET</UIButton>
 							</div>
 						</div>
 					</div>
 					<div class="flex">
 						<div>
-							<div class="label">Community: <UIIcon src="twitch" /></div>
+							<div class="label">Community: <UIIcon src="twitch" class={cN(state.twitch ? "on" : "off")} /></div>
 							<div class="full">
-								<input type="text" /><UIButton>SET</UIButton>
+								<input type="text" readonly value={state.twitch ? state.twitch.community[0].display_name : ""} />
 							</div>
 						</div>
 						<div>
-							<div class="label">Community: <UIIcon src="twitch" /></div>
+							<div class="label">Community: <UIIcon src="twitch" class={cN(state.twitch ? "on" : "off")} /></div>
 							<div class="full">
-								<input type="text" /><UIButton>SET</UIButton>
+								<input type="text" readonly value={state.twitch ? state.twitch.community[1].display_name : ""} />
 							</div>
 						</div>
 						<div>
-							<div class="label">Community: <UIIcon src="twitch" /></div>
+							<div class="label">Community: <UIIcon src="twitch" class={cN(state.twitch ? "on" : "off")} /></div>
 							<div class="full">
-								<input type="text" /><UIButton>SET</UIButton>
+								<input type="text" readonly value={state.twitch ? state.twitch.community[2].display_name : ""} />
 							</div>
 						</div>
 					</div>
