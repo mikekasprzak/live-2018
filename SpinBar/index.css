@@ -45,11 +45,15 @@ body {
 }
 
 .bar div {
-	line-height: 60px;
+	line-height: 56px;
 
 	color: #59d;
 	text-shadow: 0 0 4px rgba(0,0,0,0.95);
 
 	font-size: 28px;
 	margin: 0 3em;
+}
+
+.bar strong {
+	color: #6be;
 }
