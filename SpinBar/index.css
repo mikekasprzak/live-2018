@@ -33,24 +33,23 @@ body {
 	right: -1em;
 	bottom: 0;
 
-	height: 40px;
+	height: 48px;
 
-	background: #333;
+	/*background: #333;*/
+	/*box-shadow: 0 0 8px rgba(0,0,0,0.35);*/
+	background-image: url(lineback.svg);
+	background-repeat: no-repeat;
+	background-position: 0px -23px;
+
 	font-family: 'Nunito', cursive;
-
-	box-shadow: 0 0 8px rgba(0,0,0,0.35);
 }
 
 .bar div {
-	line-height: 40px;
+	line-height: 60px;
 
 	color: #59d;
 	text-shadow: 0 0 4px rgba(0,0,0,0.95);
 
 	font-size: 28px;
 	margin: 0 3em;
-}
-
-.bar strong {
-	color: #6be;
 }
